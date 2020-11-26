@@ -115,10 +115,22 @@ def std_parameter_error( parameters ):
     return s
     
 
+def lsqt( A, b ):
+    """
+    Function to solve a linear Ax = b system. A does not need to be a square matrix.
+    """
+    
+    if not isinstance( A, np.ndarray ):
+        A = np.array( A )
+        
+    if not isinstance( b, np.ndarray ):
+        b = np.array( b )
+    
+    ATA = np.dot( A.T, A )
+    ATAINV = np.linalg.inv( ATA )
+    ATy = np.dot( A.T, b )
 
-
-
-
+    return ATAINV.dot( ATy )
 
 
 
